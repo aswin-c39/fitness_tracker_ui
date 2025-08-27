@@ -1,12 +1,10 @@
-import 'dart:convert';
+ import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import '../models/person.dart';
 
 class ApiService {
-  // Replace with your FastAPI backend URL
-  static const String baseUrl = 'http://192.168.1.100:8000'; // Update this to your Pi's IP
-  
+  static const String baseUrl = 'http://10.67.173.95:8000'; 
   static const Duration timeout = Duration(seconds: 10);
 
   // Get all people's fitness data
@@ -111,4 +109,44 @@ class ApiService {
       return false;
     }
   }
-}
+} 
+
+
+
+/* 
+//mock api
+
+// Comment out the real API service for now
+// import 'dart:convert';
+// import 'dart:async';
+// import 'package:http/http.dart' as http;
+import '../models/person.dart';
+import 'mock_api_services.dart';
+
+class ApiService {
+  // For testing, we'll use mock data instead of real API calls
+  
+  static Future<List<Person>> getAllPeople() async {
+    return await MockApiService.getAllPeople();
+  }
+
+  static Future<Person> getPerson(String personId) async {
+    return await MockApiService.getPerson(personId);
+  }
+
+  static Future<Person> addPerson(String name) async {
+    return await MockApiService.addPerson(name);
+  }
+
+  static Future<void> startMeasurement(String personId) async {
+    return await MockApiService.startMeasurement(personId);
+  }
+
+  static Stream<List<Person>> getRealTimeData() async* {
+    yield* MockApiService.getRealTimeData();
+  }
+
+  static Future<bool> checkConnection() async {
+    return await MockApiService.checkConnection();
+  }
+} */
